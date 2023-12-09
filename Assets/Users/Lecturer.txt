@@ -1,0 +1,33 @@
+3
+@
+lec4
+123
+Mr omar
+2
+l
+5
+subj1=rpt1
+subj2=rpt2
+subj3=-1
+subj6=-1
+subj5=-1
+,
+lec5
+123
+Mr pet
+1
+l
+4
+subj3=-1
+subj6=-1
+subj5=-1
+subj7=-1
+,
+lec6
+123
+Dr Uri
+3
+l
+1
+subj7=-1
+,
