@@ -1,4 +1,4 @@
-3
+4
 @
 lec4
 123
@@ -26,8 +26,16 @@ subj7=-1
 lec6
 123
 Dr Uri
-3
+2
 l
 1
 subj7=-1
+,
+lec7
+lec7
+Dr James
+2
+l
+1
+subj8=-1
 ,

@@ -931,10 +931,10 @@ public final class Menu implements ColorSchema
                                {
                                    switch (role) {
                                        case 'l':
-                                           updateUser(admin.lecturers.get(selectedUser-1));
+                                           updateUser(admin.lecturers.get(selectedUser-1),admin);
                                            break;
                                        case 's':
-                                           updateUser(admin.students.get(selectedUser-1));
+                                           updateUser(admin.students.get(selectedUser-1),admin);
 
                                    }
                                }
@@ -1237,10 +1237,8 @@ public final class Menu implements ColorSchema
                         }
 
                         //add subject to the lecturer
-                        admin.lecturers.get(selectedUserId - 1).subjectIds += subjectId + ",";
-                        admin.lecturers.get(selectedUserId - 1).numberOfSubjects++;
-                        admin.lecturers.get(selectedUserId - 1).reportids += "-1,";
-                        admin.lecturers.get(selectedUserId - 1).newSubject = true;
+                        admin.assignSubjectToUser(selectedUserId,subjectId,role);
+
                         System.out.println(lightYellow+"|----------("+red+italic+" Lecturer Add to Subject "+lightYellow+")----------|"+reset+"\n");
 
                     }
@@ -1264,10 +1262,8 @@ public final class Menu implements ColorSchema
                         }
 
                         //add subject to the student
-                        admin.students.get(selectedUserId - 1).subjectId += subjectId + ",";
-                        admin.students.get(selectedUserId - 1).numberOfSubjects++;
-                        admin.students.get(selectedUserId - 1).mark += "-1,";
-                        admin.students.get(selectedUserId - 1).newSubject = true;
+                        admin.assignSubjectToUser(selectedUserId,subjectId,role);
+
                         System.out.println(lightYellow+"|----------("+red+italic+" Student Add to Subject "+lightYellow+")----------|"+reset+"\n");
 
                     }
@@ -1500,7 +1496,7 @@ public final class Menu implements ColorSchema
         }while (option != 0);
     }
 
-    public static void updateUser(Person user)
+    public static void updateUser(Person user, Admin admin)
     {
         System.out.println(highLightGray+"+-----------------------------------+"+reset);
         //list user info changeable values
@@ -1514,12 +1510,23 @@ public final class Menu implements ColorSchema
             read = new Scanner(System.in);
             level = read.nextLine();
 
-            user.updateLevel(level);
+
+
         }catch (Exception e)
         {
             System.out.println(yellow+"|----------------("+red+" Invalid option "+yellow+")----------------|"+reset);
 
         }
+
+        if (user instanceof Lecturer )
+        {
+            admin.updateLevel((Lecturer) user,level);
+        }
+        else
+        {
+            admin.updateLevel((Student) user,level);
+        }
+
 
         System.out.println("\n"+highLightGray+"+-----------------------------------+"+reset);
         System.out.println(bold+blue+"[!] user data updated ...."+reset);
@@ -1563,17 +1570,8 @@ public final class Menu implements ColorSchema
         System.out.println("\n"+highLightGray+"|------------------------|"+reset);
         //update number of users to avoid having same id
         admin.loadNumberOfUsers();
-        switch (role)
-        {
-            case 'l':
-                admin.lecturers.add(new Lecturer(name,String.valueOf(level)));
 
-                break;
-            case 's':
-                admin.students.add(new Student(name,String.valueOf(level)));
-
-
-        }
+        admin.addUser(name,level,role);
 
         System.out.println(yellow+"|-----------("+green+" User added "+yellow+")-----------|"+reset);
 

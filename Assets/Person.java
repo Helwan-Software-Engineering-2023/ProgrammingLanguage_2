@@ -74,13 +74,7 @@ public abstract class Person extends Common
 
     }
 
-    public void updateLevel(String level)
-    {
 
-        if( !level.equals("-1") )
-            setLevel(level);
-
-    }
 
     public String toString()
     {

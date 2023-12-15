@@ -18,7 +18,7 @@ abstract class Common implements ColorSchema{
     public FileHandler  file;
 
 
-    public String data ;
+    private  String data ;
 
 
     public String [] record;

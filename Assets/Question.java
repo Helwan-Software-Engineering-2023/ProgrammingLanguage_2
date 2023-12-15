@@ -7,7 +7,7 @@ public class Question extends Common
     private String description;
     private char correctChoice;
 
-    public static int numberOfQuestions;
+
 
     //=====================( Methods )=====================
     Question( String description, char correctChoice)
@@ -20,17 +20,12 @@ public class Question extends Common
         return correctChoice;
     }
 
-    public void setCorrectChoice(char correctChoice) {
-        this.correctChoice = correctChoice;
-    }
+
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public boolean checkAnswer(char choice)
     {

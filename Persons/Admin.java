@@ -355,6 +355,53 @@ public class Admin extends Person {
 
         }
     }
+    public void addUser(String name, int level, char role)
+    {
+        switch (role)
+        {
+            case 'l':
+                lecturers.add(new Lecturer(name,String.valueOf(level)));
+
+                break;
+            case 's':
+                students.add(new Student(name,String.valueOf(level)));
+
+
+        }
+    }
+    public void updateLevel(Lecturer user ,String level)
+    {
+
+        if( !level.equals("-1") )
+            user.setLevel(level);
+
+    }
+    public void updateLevel(Student user ,String level)
+    {
+
+        if( !level.equals("-1") )
+            user.setLevel(level);
+
+    }
+
+    public void assignSubjectToUser(int selectedUserId,String subjectId, char role)
+    {
+        switch (role)
+        {
+            case 'l':
+                lecturers.get(selectedUserId - 1).subjectIds += subjectId + ",";
+                lecturers.get(selectedUserId - 1).numberOfSubjects++;
+                lecturers.get(selectedUserId - 1).reportids += "-1,";
+                lecturers.get(selectedUserId - 1).newSubject = true;
+                break;
+            case 's':
+                students.get(selectedUserId - 1).subjectId += subjectId + ",";
+                students.get(selectedUserId - 1).numberOfSubjects++;
+                students.get(selectedUserId - 1).mark += "-1,";
+                students.get(selectedUserId - 1).newSubject = true;
+
+        }
+    }
     @Override
     public String toString()
     {

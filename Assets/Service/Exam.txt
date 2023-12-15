@@ -1,4 +1,4 @@
-7
+6
 @
 ex1
 Math1
@@ -30,7 +30,7 @@ ex5
 it111
 2
 1
-nat in a) network b) pyshical layer=a
+nat in a) network b) physical layer=a
 ,
 ex6
 oop11

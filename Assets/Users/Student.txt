@@ -5,12 +5,13 @@ std2
 Ahmed
 4
 s
-5
+6
 subj1=1
 subj2=2
-subj4=-1
+subj4=1
 subj6=-1
 subj7=-1
+subj8=-1
 ,
 std3
 123
